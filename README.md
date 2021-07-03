@@ -32,3 +32,9 @@ Build ECommerce Website Like Amazon by Next.js
    1. Make Product cards linkable
    2. Create /product/[slug] route
    3. find product based on slug
+9. Create Product Details Page
+   1. Create 3 columns
+   2. show image in first column
+   3. show product info in second column
+   4. show add to cart action on third column
+   5. add styles
