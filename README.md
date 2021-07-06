@@ -63,3 +63,7 @@ Build ECommerce Website Like Amazon by Next.js
     3. get product from db
     4. return data as props
     5. use it in product screen too
+15. Implement Add to cart
+    1.  define cart in context
+    2.  dispatch add to cart action
+    3.  set click event handler for button
