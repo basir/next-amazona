@@ -22,7 +22,7 @@ import {
   ListItem,
 } from '@material-ui/core';
 
-export default function CartScreen() {
+function CartScreen() {
   const { state } = useContext(Store);
   const {
     cart: { cartItems },
@@ -119,4 +119,4 @@ export default function CartScreen() {
   );
 }
 
-// export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });
+export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });
