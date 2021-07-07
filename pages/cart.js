@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import dynamic from 'next/dynamic';
 import Layout from '../components/Layout';
 import { Store } from '../utils/Store';
 import NextLink from 'next/link';
@@ -94,7 +95,7 @@ export default function CartScreen() {
               </Table>
             </TableContainer>
           </Grid>
-          <Grid md={3} xs={12}>
+          <Grid item md={3} xs={12}>
             <Card>
               <List>
                 <ListItem>
@@ -117,3 +118,5 @@ export default function CartScreen() {
     </Layout>
   );
 }
+
+// export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });
