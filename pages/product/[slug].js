@@ -20,19 +20,21 @@ import { useRouter } from 'next/router';
 
 export default function ProductScreen(props) {
   const router = useRouter();
-  const { dispatch } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
   const { product } = props;
   const classes = useStyles();
   if (!product) {
     return <div>Product Not Found</div>;
   }
   const addToCartHandler = async () => {
+    const existItem = state.cart.cartItems.find((x) => x._id === product._id);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${product._id}`);
-    if (data.countInStock <= 0) {
+    if (data.countInStock < quantity) {
       window.alert('Sorry. Product is out of stock');
       return;
     }
-    dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity: 1 } });
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
     router.push('/cart');
   };
 
