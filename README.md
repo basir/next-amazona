@@ -113,6 +113,11 @@ $ Open http://localhost:3000
 20. Create Sample Users
     1.  create user model
     2.  add sample user in seed api
- 21. Build Login API
+21. Build Login API
     3.  use jsonwebtoken to sign token
     4.  implement login api
+22. Complete Login Page
+    1.  handle form submission
+    2.  add userInfo to context
+    3.  save userInfo in cookies
+    4.  show user name in nav bar using menu
