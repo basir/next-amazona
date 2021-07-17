@@ -141,3 +141,9 @@ $ Open http://localhost:3000
     1.  display order info
     2.  show order summary
     3.  add place order button
+28. Implement Place Order Action
+    1.  create click handler
+    2.  send ajax request
+    4.  clear cart
+    5.  redirect to order screen  
+    3.  create backend api
