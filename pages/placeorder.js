@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Layout from '../components/Layout';
 import { Store } from '../utils/Store';
@@ -24,6 +24,7 @@ import {
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import useStyles from '../utils/styles';
+import CheckoutWizard from '../components/CheckoutWizard';
 
 function PlaceOrder() {
   const classes = useStyles();
@@ -40,8 +41,15 @@ function PlaceOrder() {
   const taxPrice = round2(itemsPrice * 0.15);
   const totalPrice = round2(itemsPrice + shippingPrice + taxPrice);
 
+  useEffect(() => {
+    if (!paymentMethod) {
+      router.push('/payment');
+    }
+  }, []);
+
   return (
     <Layout title="Shopping Cart">
+      <CheckoutWizard activeStep={3}></CheckoutWizard>
       <Typography component="h1" variant="h1">
         Place Order
       </Typography>
