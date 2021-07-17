@@ -132,4 +132,8 @@ $ Open http://localhost:3000
 25.  Create Shipping Page
     4.  create form
     5.  add address fields
-    8.  save in Context and Cookies
+    8.  save address in context
+26. Create Payment Page
+    1.  create form
+    2.  add radio button
+    3.  save method in context
