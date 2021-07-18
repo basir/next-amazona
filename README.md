@@ -147,3 +147,8 @@ $ Open http://localhost:3000
     4.  clear cart
     5.  redirect to order screen  
     3.  create backend api
+29. Create Order Details Page
+    1.  create api to order info
+    2.  create payment, shipping and items
+    3.  create order summary
+    
