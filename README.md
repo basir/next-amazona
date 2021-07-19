@@ -157,4 +157,7 @@ $ Open http://localhost:3000
     3.  implement pay order api
 31. Display Orders History
     1. create orders api
-    3. show orders in profile screenW
+    2. show orders in profile screen
+ 32. Update User Profile
+    1. create profile screen
+    2. create update profile api
