@@ -13,6 +13,7 @@
     "@paypal/react-paypal-js": "^7.2.0",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
+    "chart.js": "^3.4.1",
     "js-cookie": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.2",
@@ -20,6 +21,7 @@
     "next-connect": "^0.10.1",
     "notistack": "^1.0.9",
     "react": "17.0.2",
+    "react-chartjs-2": "^3.0.3",
     "react-dom": "17.0.2",
     "react-hook-form": "^7.11.0"
   },

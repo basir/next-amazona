@@ -161,3 +161,7 @@ $ Open http://localhost:3000
  32. Update User Profile
     1. create profile screen
     2. create update profile api
+ 33. Create Admin Dashboard
+    1. Create Admin Menu
+    2. Add Admin Auth Middleware  
+    3. Implement admin summary api
