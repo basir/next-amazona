@@ -170,3 +170,7 @@ $ Open http://localhost:3000
      2.  create orders page
      3.  create orders api
      4.  use api in page
+ 35. Deliver Order For Admin
+     1.  create deliver api
+     2.  add deliver button
+     3.  implement click handler
