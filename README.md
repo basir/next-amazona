@@ -185,3 +185,8 @@ $ Open http://localhost:3000
  38. Update Product
      1.  create form submit handler
      2.  create backend api for update
+ 39. Upload Product Image
+     1.  create cloudinary account
+     2.  get cloudinary keys
+     3.  create upload api
+     4.  upload files in edit page
