@@ -174,7 +174,11 @@ $ Open http://localhost:3000
      1.  create deliver api
      2.  add deliver button
      3.  implement click handler
- 34. List Products For Admin
+ 36. List Products For Admin
      2.  create products page
      3.  create products api
      4.  use api in page
+ 37. Create Product Edit Page
+     1.  create edit page
+     2.  create api for product
+     3.  show product data in form
