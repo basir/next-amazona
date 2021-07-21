@@ -182,3 +182,6 @@ $ Open http://localhost:3000
      1.  create edit page
      2.  create api for product
      3.  show product data in form
+ 38. Update Product
+     1.  create form submit handler
+     2.  create backend api for update
