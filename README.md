@@ -199,3 +199,7 @@ $ Open http://localhost:3000
      1.  create users page
      2.  create users api
      3.  use api in page
+ 42. Create User Edit Page
+     1.  create edit page
+     2.  create api for user
+     3.  show user data in form
