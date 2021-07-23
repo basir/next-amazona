@@ -208,3 +208,8 @@ $ Open http://localhost:3000
      2.  connect to github
      3.  create altas mongodb db
      4.  push code to github
+ 44. Review Products
+     1.  add reviews model
+     2.  create api for reviews
+     3.  create review form
+     4.  show reviews on home screen
