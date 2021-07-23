@@ -207,3 +207,4 @@ $ Open http://localhost:3000
      1.  create vercel account
      2.  connect to github
      3.  create altas mongodb db
+     4.  push code to github
