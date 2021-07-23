@@ -203,3 +203,7 @@ $ Open http://localhost:3000
      1.  create edit page
      2.  create api for user
      3.  show user data in form
+ 43. Deploy on Vercel
+     1.  create vercel account
+     2.  connect to github
+     3.  create altas mongodb db
