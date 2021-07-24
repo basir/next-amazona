@@ -213,3 +213,8 @@ $ Open http://localhost:3000
      2.  create api for reviews
      3.  create review form
      4.  show reviews on home screen
+ 45. Create Sidebar
+     1.  add drawer
+     2.  list categories
+     3.  redirect to search screen
+ 
