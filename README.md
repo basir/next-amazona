@@ -217,4 +217,9 @@ $ Open http://localhost:3000
      1.  add drawer
      2.  list categories
      3.  redirect to search screen
+ 46. Create Search Box
+     1.  add form
+     2.  handle form submit
+     3.  redirect to search screen
+ 
  
