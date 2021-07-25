@@ -221,5 +221,9 @@ $ Open http://localhost:3000
      1.  add form
      2.  handle form submit
      3.  redirect to search screen
+ 47. Create Search Page
+     1.  create filters
+     2.  list products
+     3.  show filters
  
  
