@@ -119,6 +119,8 @@ export default function Layout({ title, description, children }) {
     dispatch({ type: 'USER_LOGOUT' });
     Cookies.remove('userInfo');
     Cookies.remove('cartItems');
+    Cookies.remove('shippinhAddress');
+    Cookies.remove('paymentMethod');
     router.push('/');
   };
   return (

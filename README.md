@@ -229,5 +229,10 @@ $ Open http://localhost:3000
      1.  create featured products
      2.  feed carousel data
      3.  show popular products
+ 49. Choose Location on Map
+     1.  add google map
+     2.  create map screen
+     3.  choose location
+     4.  show in order screen
  
  
