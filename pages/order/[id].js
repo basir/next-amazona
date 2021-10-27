@@ -19,10 +19,11 @@ import {
   Card,
   List,
   ListItem,
-} from '@material-ui/core';
+  Box,
+} from '@mui/material';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import useStyles from '../../utils/styles';
+import classes from '../../utils/classes';
 import { useSnackbar } from 'notistack';
 import { getError } from '../../utils/error';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
@@ -64,7 +65,7 @@ function reducer(state, action) {
 function Order({ params }) {
   const orderId = params.id;
   const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
-  const classes = useStyles();
+
   const router = useRouter();
   const { state } = useContext(Store);
   const { userInfo } = state;
@@ -201,11 +202,11 @@ function Order({ params }) {
       {loading ? (
         <CircularProgress />
       ) : error ? (
-        <Typography className={classes.error}>{error}</Typography>
+        <Typography sx={classes.error}>{error}</Typography>
       ) : (
         <Grid container spacing={1}>
           <Grid item md={9} xs={12}>
-            <Card className={classes.section}>
+            <Card sx={classes.section}>
               <List>
                 <ListItem>
                   <Typography component="h2" variant="h2">
@@ -235,7 +236,7 @@ function Order({ params }) {
                 </ListItem>
               </List>
             </Card>
-            <Card className={classes.section}>
+            <Card sx={classes.section}>
               <List>
                 <ListItem>
                   <Typography component="h2" variant="h2">
@@ -248,7 +249,7 @@ function Order({ params }) {
                 </ListItem>
               </List>
             </Card>
-            <Card className={classes.section}>
+            <Card sx={classes.section}>
               <List>
                 <ListItem>
                   <Typography component="h2" variant="h2">
@@ -305,7 +306,7 @@ function Order({ params }) {
             </Card>
           </Grid>
           <Grid item md={3} xs={12}>
-            <Card className={classes.section}>
+            <Card sx={classes.section}>
               <List>
                 <ListItem>
                   <Typography variant="h2">Order Summary</Typography>
@@ -359,13 +360,13 @@ function Order({ params }) {
                     {isPending ? (
                       <CircularProgress />
                     ) : (
-                      <div className={classes.fullWidth}>
+                      <Box sx={classes.fullWidth}>
                         <PayPalButtons
                           createOrder={createOrder}
                           onApprove={onApprove}
                           onError={onError}
                         ></PayPalButtons>
-                      </div>
+                      </Box>
                     )}
                   </ListItem>
                 )}

@@ -1,6 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import NextLink from 'next/link';
-import { Grid, Link, Typography } from '@material-ui/core';
+import { Grid, Link, Typography } from '@mui/material';
 import Layout from '../components/Layout';
 import db from '../utils/db';
 import Product from '../models/Product';
@@ -9,11 +8,11 @@ import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import { Store } from '../utils/Store';
 import ProductItem from '../components/ProductItem';
-import Carousel from 'react-material-ui-carousel';
-import useStyles from '../utils/styles';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import classes from '../utils/classes';
 
 export default function Home(props) {
-  const classes = useStyles();
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { topRatedProducts, featuredProducts } = props;
@@ -30,24 +29,21 @@ export default function Home(props) {
   };
   return (
     <Layout>
-      <Carousel className={classes.mt1} animation="slide">
+      <Carousel>
         {featuredProducts.map((product) => (
           <NextLink
             key={product._id}
             href={`/product/${product.slug}`}
             passHref
           >
-            <Link>
-              <img
-                src={product.featuredImage}
-                alt={product.name}
-                className={classes.featuredImage}
-              ></img>
+            <Link sx={classes.flex}>
+              <img src={product.featuredImage} alt={product.name}></img>
             </Link>
           </NextLink>
         ))}
       </Carousel>
-      <Typography variant="h2">Popular Products</Typography>
+
+      <Typography variant="h2">Popular Products 1</Typography>
       <Grid container spacing={3}>
         {topRatedProducts.map((product) => (
           <Grid item md={4} key={product.name}>
