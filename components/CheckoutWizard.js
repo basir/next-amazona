@@ -1,6 +1,5 @@
 import { Step, StepLabel, Stepper } from '@mui/material';
 import React from 'react';
-import classes from '../utils/classes';
 
 export default function CheckoutWizard({ activeStep = 0 }) {
   return (
