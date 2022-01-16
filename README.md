@@ -234,5 +234,57 @@ $ Open http://localhost:3000
      2.  create map screen
      3.  choose location
      4.  show in order screen
- 
- 
+ 50. Upgrade to @mui
+   1. package.json
+      1. remove material-ui/* 
+      2. add @mui
+      3. upgrade packages 
+   2. rename styles.js to classes.js
+      1. remove makeStyles from classes.js
+      2. use simple objects for styling
+   3. create Form styled component
+   4. update Layout.js
+   5. remove strictmode in next.config.js for filling form inputs
+        // reactStrictMode: true,
+   6. _app.js
+      1. remove useEffect
+      2. use CacheProvider and emotionCache
+      3. create createEmotionCache.js in utils folder
+   7. update _document.js
+      1. remove ServerStyleSheets
+      2. use createEmotionServer and createEmotionCache
+      3. edit ctx.renderPage
+   8. remove  styles/Home.module.css, styles/globals.css
+   9. utils/db.js: remove options in mongoose connect
+   10. simple changes:
+      1. useStyles() with import classes
+      2. material-ui/core with @mui/material
+      3. materia-ui/icons with @mui/icons-material
+      4. <form classes with <Form
+      5. className with sx
+      6. div, span, ... with Box
+      7. button with Button
+      8. use JSON.stringify in Cookies.set
+  1. files to apply simple changes 
+       1. replace useStyles with classes, material-ui with @mui/material, 
+       2. components/CheckoutWizard.js
+       3. components/ProductItem.js
+       4. pages/admin/dashboard.js
+       5. pages/admin/orders.js
+       6. pages/admin/product/[id].js
+       7. pages/admin/products.js
+       8. pages/admin/user/[id].js 
+       9. pages/admin/users.js
+       10. pages/cart.js
+       11. pages/index.js
+       12. pages/login.js 
+       13. pages/map.js
+       14. pages/order-history.js
+       15. pages/order/[id].js
+       16. pages/payment.js
+       17. pages/placeorder.js
+       18. pages/product/[slug].js
+       19. pages/profile.js
+       20. pages/register.js
+       21. pages/search.js
+       22. pages/shipping.js 

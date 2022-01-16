@@ -1,5 +1,19 @@
-import React, { useContext } from 'react';
 import Head from 'next/head';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+
+import { createTheme } from '@mui/material/styles';
+
+import useMediaQuery from '@mui/material/useMediaQuery';
+import React, { useContext, useEffect, useState } from 'react';
+import MenuIcon from '@mui/icons-material/Menu';
+import CancelIcon from '@mui/icons-material/Cancel';
+import SearchIcon from '@mui/icons-material/Search';
+import classes from '../utils/classes';
+import { getError } from '../utils/error';
+import Cookies from 'js-cookie';
+import { useSnackbar } from 'notistack';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import {
   AppBar,
@@ -7,9 +21,6 @@ import {
   Typography,
   Container,
   Link,
-  createMuiTheme,
-  ThemeProvider,
-  CssBaseline,
   Switch,
   Badge,
   Button,
@@ -23,25 +34,23 @@ import {
   Divider,
   ListItemText,
   InputBase,
-} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import CancelIcon from '@material-ui/icons/Cancel';
-import SearchIcon from '@material-ui/icons/Search';
-import useStyles from '../utils/styles';
+} from '@mui/material';
+
 import { Store } from '../utils/Store';
-import { getError } from '../utils/error';
-import Cookies from 'js-cookie';
-import { useState } from 'react';
-import { useRouter } from 'next/router';
-import { useSnackbar } from 'notistack';
-import axios from 'axios';
-import { useEffect } from 'react';
 
 export default function Layout({ title, description, children }) {
-  const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { darkMode, cart, userInfo } = state;
-  const theme = createMuiTheme({
+
+  const theme = createTheme({
+    components: {
+      MuiLink: {
+        defaultProps: {
+          underline: 'hover',
+        },
+      },
+    },
+
     typography: {
       h1: {
         fontSize: '1.6rem',
@@ -55,7 +64,7 @@ export default function Layout({ title, description, children }) {
       },
     },
     palette: {
-      type: darkMode ? 'dark' : 'light',
+      mode: darkMode ? 'dark' : 'light',
       primary: {
         main: '#f0c000',
       },
@@ -64,7 +73,8 @@ export default function Layout({ title, description, children }) {
       },
     },
   });
-  const classes = useStyles();
+
+  const router = useRouter();
 
   const [sidbarVisible, setSidebarVisible] = useState(false);
   const sidebarOpenHandler = () => {
@@ -123,28 +133,30 @@ export default function Layout({ title, description, children }) {
     Cookies.remove('paymentMethod');
     router.push('/');
   };
+
+  const isDesktop = useMediaQuery('(min-width:600px)');
   return (
-    <div>
+    <>
       <Head>
         <title>{title ? `${title} - Next Amazona` : 'Next Amazona'}</title>
         {description && <meta name="description" content={description}></meta>}
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <AppBar position="static" className={classes.navbar}>
-          <Toolbar className={classes.toolbar}>
+        <AppBar position="static" sx={classes.appbar}>
+          <Toolbar sx={classes.toolbar}>
             <Box display="flex" alignItems="center">
               <IconButton
                 edge="start"
                 aria-label="open drawer"
                 onClick={sidebarOpenHandler}
-                className={classes.menuButton}
+                sx={classes.menuButton}
               >
-                <MenuIcon className={classes.navbarButton} />
+                <MenuIcon sx={classes.navbarButton} />
               </IconButton>
               <NextLink href="/" passHref>
                 <Link>
-                  <Typography className={classes.brand}>amazona</Typography>
+                  <Typography sx={classes.brand}>amazona</Typography>
                 </Link>
               </NextLink>
             </Box>
@@ -188,24 +200,26 @@ export default function Layout({ title, description, children }) {
               </List>
             </Drawer>
 
-            <div className={classes.searchSection}>
-              <form onSubmit={submitHandler} className={classes.searchForm}>
-                <InputBase
-                  name="query"
-                  className={classes.searchInput}
-                  placeholder="Search products"
-                  onChange={queryChangeHandler}
-                />
-                <IconButton
-                  type="submit"
-                  className={classes.iconButton}
-                  aria-label="search"
-                >
-                  <SearchIcon />
-                </IconButton>
+            <Box sx={isDesktop ? classes.visible : classes.hidden}>
+              <form onSubmit={submitHandler}>
+                <Box sx={classes.searchForm}>
+                  <InputBase
+                    name="query"
+                    sx={classes.searchInput}
+                    placeholder="Search products"
+                    onChange={queryChangeHandler}
+                  />
+                  <IconButton
+                    type="submit"
+                    sx={classes.searchButton}
+                    aria-label="search"
+                  >
+                    <SearchIcon />
+                  </IconButton>
+                </Box>
               </form>
-            </div>
-            <div>
+            </Box>
+            <Box>
               <Switch
                 checked={darkMode}
                 onChange={darkModeChangeHandler}
@@ -232,7 +246,7 @@ export default function Layout({ title, description, children }) {
                     aria-controls="simple-menu"
                     aria-haspopup="true"
                     onClick={loginClickHandler}
-                    className={classes.navbarButton}
+                    sx={classes.navbarButton}
                   >
                     {userInfo.name}
                   </Button>
@@ -274,14 +288,16 @@ export default function Layout({ title, description, children }) {
                   </Link>
                 </NextLink>
               )}
-            </div>
+            </Box>
           </Toolbar>
         </AppBar>
-        <Container className={classes.main}>{children}</Container>
-        <footer className={classes.footer}>
+        <Container component="main" sx={classes.main}>
+          {children}
+        </Container>
+        <Box component="footer" sx={classes.footer}>
           <Typography>All rights reserved. Next Amazona.</Typography>
-        </footer>
+        </Box>
       </ThemeProvider>
-    </div>
+    </>
   );
 }

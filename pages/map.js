@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import useStyles from '../utils/styles';
+import classes from '../utils/classes';
 import { Store } from '../utils/Store';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
-import { CircularProgress } from '@material-ui/core';
+import { CircularProgress, Box } from '@mui/material';
 import {
   GoogleMap,
   LoadScript,
@@ -19,7 +19,6 @@ const libs = ['places'];
 
 function Map() {
   const router = useRouter();
-  const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
 
   const { state, dispatch } = useContext(Store);
@@ -109,7 +108,7 @@ function Map() {
     markerRef.current = marker;
   };
   return googleApiKey ? (
-    <div className={classes.fullContainer}>
+    <Box sx={classes.fullHeight}>
       <LoadScript libraries={libs} googleMapsApiKey={googleApiKey}>
         <GoogleMap
           id="sample-map"
@@ -123,17 +122,17 @@ function Map() {
             onLoad={onLoadPlaces}
             onPlacesChanged={onPlacesChanged}
           >
-            <div className={classes.mapInputBox}>
+            <Box sx={classes.mapInputBox}>
               <input type="text" placeholder="Enter your address"></input>
-              <button type="button" className="primary" onClick={onConfirm}>
+              <button type="button" onClick={onConfirm}>
                 Confirm
               </button>
-            </div>
+            </Box>
           </StandaloneSearchBox>
           <Marker position={location} onLoad={onMarkerLoad}></Marker>
         </GoogleMap>
       </LoadScript>
-    </div>
+    </Box>
   ) : (
     <CircularProgress />
   );
