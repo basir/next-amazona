@@ -7,6 +7,7 @@ import User from '../../models/User';
 const handler = nc();
 
 handler.get(async (req, res) => {
+  return res.send({ message: 'already seeded' });
   await db.connect();
   await User.deleteMany();
   await User.insertMany(data.users);
